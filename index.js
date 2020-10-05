@@ -1,26 +1,51 @@
-let lunchArray = ["Burger", "Salad", "Lasagna", "Sushi", "Meatloaf" ];
+/**
+ * 1) Given the array,
+ * Let lunchArray = [ “Burger”, “Salad”, “Lasagna”, “Sushi”, “Meatloaf” ]
+ * Loop through the array to find the longest word by how many letters each string contains.
+ * Which other variables will you be needing?
+ * 2) Print the length of the longest word to the console.
+ * 3) Print the longest word to the console.  
+ * 4) Now what if the array was 
+ * Let lunchArray = [ “Burger  Salad  Lasagna Sushi  Meatloaf” ]
+ * Since all the words are in one string together, how would you solve this? 
+
+ */
+
 
 function longestWord (arr) {
     let length = 0;
     let word = "";
-    
-    for (let i = 0; i < lunchArray.length; i++) {
-        let wordLength = arr[i].length;
-        if(wordLength > length){
-            length = wordLength;
-            word = arr[i]
-        }
+    let result;
+
+    if(!(arr[0].includes(" "))){
+        result = helper(arr, length, word);
+    } else {
+        let newArr = arr[0].split(" ");
+        result = helper(newArr, length, word);
     }
-    console.log(word, length)
+
+    console.log(result[0], result[1])
 }
 
-// longestWord(lunchArray);
+function helper(arr, len, word) {
+    for (let i = 0; i < arr.length; i++) {
+        if(arr[i].length > len){
+            len = arr[i].length;
+            word = arr[i];
+        }
+    }
+    return [word, len]
+}
+
+// let lunchArray = ["Burger", "Salad", "Lasagna", "Sushi", "Meatloaf" ];
+let lunchArray = [ "Burger  Salad  Lasagna Sushi  Meatloaf" ];
+console.log(longestWord(lunchArray));
 
 /**
  * Write a function that returns elements on odd positions in a list.
  */
 
-const groceries = ["carrots", "spinach", "lettuce", "tofu", "tomato", "broccoli", "potato"];
+// const groceries = ["carrots", "spinach", "lettuce", "tofu", "tomato", "broccoli", "potato"];
 
 function oddElements (list) {
     let oddItems = [];
@@ -33,7 +58,7 @@ function oddElements (list) {
     return oddItems;
 }
 
-//  console.log(oddElements(groceries))
+ console.log(oddElements(groceries))
 
  /**
   * Compute the factorial of any given number
@@ -48,7 +73,7 @@ function factorial(n){
     return result;
 }
 
-//   console.log(factorial(4));
+  console.log(factorial(4));
 
   /**
    * Conditional Practice
